@@ -26,6 +26,7 @@ import org.springframework.security.oauth2.server.authorization.client
                                                               .RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client
                                                     .RegisteredClientRepository;
+import org.springframework.security.oauth2.server.authorization.config.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.config.ProviderSettings;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -73,6 +74,9 @@ public class AuthorizationServerConfig {
 				// single sign-on solution
 				.scope(OidcScopes.OPENID)
 				// lambda, allows us to customize the client settings
+				.clientSettings(
+			            ClientSettings.builder()
+			            .requireAuthorizationConsent(true).build())
 				.build();
 		return new InMemoryRegisteredClientRepository(registeredClient);		
 	}

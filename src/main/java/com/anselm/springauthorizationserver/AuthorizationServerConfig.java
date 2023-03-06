@@ -73,7 +73,6 @@ public class AuthorizationServerConfig {
 				// single sign-on solution
 				.scope(OidcScopes.OPENID)
 				// lambda, allows us to customize the client settings
-			
 				.build();
 		return new InMemoryRegisteredClientRepository(registeredClient);		
 	}
@@ -84,10 +83,12 @@ public class AuthorizationServerConfig {
 	 * signing key. The following beans are required to create the JWT.
 	 */
 	
-	 @Bean
-	  public ProviderSettings providerSettings() {
-	    return new ProviderSettings().issuer("http://authserver:9000");
-	  }
+	@Bean
+	public ProviderSettings providerSettings() {
+	    return ProviderSettings.builder()
+	      .issuer("http://auth-server:9000")
+	      .build();
+	}
 
 	  @Bean
 	  public JWKSource<SecurityContext> jwkSource()

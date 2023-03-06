@@ -26,5 +26,4 @@ public class SpringAuthorizationServerApplication {
 					new User("tacochef", encoder.encode("password"), "ROLE_ADMIN"));
 		};
 	}
-
 }

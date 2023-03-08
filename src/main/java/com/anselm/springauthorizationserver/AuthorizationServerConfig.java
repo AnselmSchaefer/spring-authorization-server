@@ -68,8 +68,8 @@ public class AuthorizationServerConfig {
 				.redirectUri(
 						"http://127.0.0.1:9090/login/oauth2/code/taco-admin-client")
 				// one or more scopes that the client is allowed to ask for
-				.scope("writeIngredients")
-				.scope("deleteIngredients")
+				.scope("writeTacos")
+				.scope("deleteTacos")
 				// this scope will be necessary later when we use the authorization server as
 				// single sign-on solution
 				.scope(OidcScopes.OPENID)
